@@ -57,3 +57,11 @@
 /home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
 /home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/BCrypt.Net-Next.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/ScottBrady91.AspNetCore.Identity.BCryptPasswordHasher.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/AutoMapper.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/Microsoft.Extensions.Options.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/Microsoft.Extensions.Primitives.dll
+/home/kantha/Documents/GitHub/BDMS-APIs/bin/Debug/net5.0/System.Runtime.CompilerServices.Unsafe.dll

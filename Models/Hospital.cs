@@ -1,16 +1,32 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BDMS_APIs.Models{
+namespace BDMS_APIs.Models
+{
 
     [Table("Hospitals")]
-    public class Hospital{
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
+    public class Hospital
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public string HospitalID {get;set;}
-        public string Name {get;set;}
-        public string District {get;set;}
-        public string City {get;set;}
-        public string PasswordHash {get;set;}
+        public string HospitalID { get; set; }
+        public string Name { get; set; }
+        public string District { get; set; }
+        public string City { get; set; }
+        public string Password { get; set; }
+
+        public void hashPassword(string plainTextPassword)
+        {
+            this.Password = BCrypt.Net.BCrypt.HashPassword(plainTextPassword);
+        }
+
+        public bool isPasswordCorrect(string plainTextPassword)
+        {
+            if (BCrypt.Net.BCrypt.Verify(plainTextPassword, this.Password))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

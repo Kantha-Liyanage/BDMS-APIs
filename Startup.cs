@@ -37,6 +37,9 @@ namespace BDMS_APIs
                 options => options.UseMySQL("server=bms.c3jqmjuhy912.us-east-1.rds.amazonaws.com; database=BDMS; user=admin; password=BloodDonation2022")
             );
 
+            //DTO Mapper
+            services.AddAutoMapper(typeof(Startup));
+
             //Auth
             var tokenKey = Configuration.GetValue<string>("TokenKey");
             var key = Encoding.ASCII.GetBytes(tokenKey);
@@ -75,7 +78,12 @@ namespace BDMS_APIs
 
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BDMS_APIs v1"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BDMS_APIs v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "BDMS_APIs v1");
+                    c.RoutePrefix = "";
+                });
             }
 
             app.UseHttpsRedirection();
