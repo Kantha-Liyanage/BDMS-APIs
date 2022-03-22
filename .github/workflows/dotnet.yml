@@ -40,10 +40,10 @@ jobs:
     - name: Create new ElasticBeanstalk Application Version
       run: |
         aws elasticbeanstalk create-application-version \
-        --application-name BDMSApp \
+        --application-name BDMS-API \
         --source-bundle S3Bucket="elasticbeanstalk-us-east-1-741885263304",S3Key="deploy_package.zip" \
         --version-label "ver-${{ github.sha }}" \
         --description "commit-sha-${{ github.sha }}"
 
     - name: Deploy new ElasticBeanstalk Application Version
-      run: aws elasticbeanstalk update-environment --environment-name BDMSApp-env-1 --version-label "ver-${{ github.sha }}"    
+      run: aws elasticbeanstalk update-environment --environment-name BDMS-API-env-1 --version-label "ver-${{ github.sha }}"    
