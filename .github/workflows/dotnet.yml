@@ -33,10 +33,9 @@ jobs:
 # s3://elasticbeanstalk-us-east-1-741885263304/
 # S3Bucket="elasticbeanstalk-us-east-1-741885263304"
 #-----------------------------------------------------------#
-# ,S3Key="deploy_package.zip"
 
-#    - name: Create ZIP deployment package
-#      run: zip -r deploy_package.zip ./
+    - name: Create ZIP deployment package
+      run: zip -r deploy_package.zip ./
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -52,7 +51,7 @@ jobs:
       run: |
         aws elasticbeanstalk create-application-version \
         --application-name BDMS_ENV \
-        --source-bundle S3Bucket="elasticbeanstalk-us-east-1-741885263304" \
+        --source-bundle S3Bucket="elasticbeanstalk-us-east-1-741885263304", S3Key="deploy_package.zip" \
         --version-label "ver-${{ github.sha }}" \
         --description "commit-sha-${{ github.sha }}"
 
