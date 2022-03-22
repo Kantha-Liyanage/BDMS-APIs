@@ -18,6 +18,12 @@ namespace BDMS_APIs.Controllers
             this.dataContext = dataContext;
         }
 
+        [HttpGet]
+        public ActionResult Test()
+        {
+            return Ok(new MessageDTO("Badu Weda :)"));
+        }
+
         [HttpPost("AuthenticateDonor")]
         public ActionResult AuthenticateDonor(DonorAuthDTO donorAuthDTO)
         {
