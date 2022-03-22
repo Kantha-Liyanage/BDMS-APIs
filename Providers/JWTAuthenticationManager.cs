@@ -5,7 +5,8 @@ using System.Security.Claims;
 using System.Text;
 using static BDMS_APIs.Controllers.AuthController;
 
-namespace BDMS_APIs.Providers{
+namespace BDMS_APIs.Providers
+{
     public class JWTAuthenticationManager : IJWTAuthenticationManager
     {
         private readonly string tokenKey;
@@ -15,7 +16,7 @@ namespace BDMS_APIs.Providers{
             this.tokenKey = tokenKey;
         }
 
-        public string Authenticate(string NIC, UserType userType)
+        public string Authenticate(string userID, UserType userType)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(tokenKey);
@@ -23,7 +24,7 @@ namespace BDMS_APIs.Providers{
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, NIC),
+                    new Claim(ClaimTypes.NameIdentifier, userID),
                     new Claim(ClaimTypes.Role, userType.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),
