@@ -47,3 +47,5 @@ jobs:
 
     - name: Deploy new ElasticBeanstalk Application Version
       run: aws elasticbeanstalk update-environment --environment-name Bdmsapp-env --version-label "ver-${{ github.sha }}"    
+
+# Test
