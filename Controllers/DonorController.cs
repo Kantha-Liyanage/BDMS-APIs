@@ -38,12 +38,28 @@ namespace BDMS_APIs.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Read(string nic)
+        {
+            try
+            {
+                Donor entity = this.dataContext.Donors.Find(nic);
+                return Ok(entity);
+            }
+            catch (Exception er)
+            {
+                return BadRequest(new MessageDTO(er.InnerException.Message));
+            }
+        }
+
         [HttpPatch]
         public ActionResult Update([FromBody] DonorProfileDTO donorProfileDTO)
         {
             try
             {
                 Donor entity = this.mapper.Map<Donor>(donorProfileDTO);
+                Donor dbEntry = this.dataContext.Donors.Find(donorProfileDTO.NIC);
+                entity.Password = dbEntry.Password;
                 this.dataContext.Donors.Update(entity);
                 int rows = this.dataContext.SaveChanges();
                 if (rows == 1)

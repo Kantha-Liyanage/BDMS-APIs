@@ -39,12 +39,28 @@ namespace BDMS_APIs.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Read(string hospitalID)
+        {
+            try
+            {
+                Hospital entity = this.dataContext.Hospitals.Find(hospitalID);
+                return Ok(entity);
+            }
+            catch (Exception er)
+            {
+                return BadRequest(new MessageDTO(er.InnerException.Message));
+            }
+        }
+
         [HttpPatch]
         public ActionResult Update([FromBody] HospitalUpdateDTO hospitalUpdateDTO)
         {
             try
             {
                 Hospital entity = this.mapper.Map<Hospital>(hospitalUpdateDTO);
+                Hospital dbEntity = this.dataContext.Hospitals.Find(hospitalUpdateDTO.HospitalID);
+                entity.Password = dbEntity.Password;
                 this.dataContext.Hospitals.Update(entity);
                 int rows = this.dataContext.SaveChanges();
                 if (rows == 1)
