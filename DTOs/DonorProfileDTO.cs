@@ -1,4 +1,5 @@
 using System;
+using BDMS_APIs.Models;
 
 namespace BDMS_APIs.DTOs
 {
@@ -14,5 +15,19 @@ namespace BDMS_APIs.DTOs
         public string Gender { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+
+        public void MapTo(Donor donor)
+        {
+            donor.NIC = NIC;
+            donor.FirstName = FirstName;
+            donor.LastName = LastName;
+            donor.District = District;
+            donor.City = City;
+            donor.DOB = DOB;
+            donor.BloodGroup = BloodGroup;
+            donor.Gender = Gender;
+            donor.Email = Email;
+            donor.Phone = Phone;
+        }
     }
 }

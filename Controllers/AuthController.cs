@@ -48,7 +48,7 @@ namespace BDMS_APIs.Controllers
             }
             else
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 
@@ -101,7 +101,7 @@ namespace BDMS_APIs.Controllers
             }
             else
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 

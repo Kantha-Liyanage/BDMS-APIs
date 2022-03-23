@@ -58,9 +58,8 @@ namespace BDMS_APIs.Controllers
         {
             try
             {
-                Donor entity = this.mapper.Map<Donor>(donorProfileDTO);
-                Donor dbEntry = this.dataContext.Donors.Find(donorProfileDTO.NIC);
-                entity.Password = dbEntry.Password;
+                Donor entity = this.dataContext.Donors.Find(donorProfileDTO.NIC);
+                donorProfileDTO.MapTo(entity);
                 this.dataContext.Donors.Update(entity);
                 int rows = this.dataContext.SaveChanges();
                 if (rows == 1)

@@ -59,9 +59,8 @@ namespace BDMS_APIs.Controllers
         {
             try
             {
-                Hospital entity = this.mapper.Map<Hospital>(hospitalUpdateDTO);
-                Hospital dbEntity = this.dataContext.Hospitals.Find(hospitalUpdateDTO.HospitalID);
-                entity.Password = dbEntity.Password;
+                Hospital entity = this.dataContext.Hospitals.Find(hospitalUpdateDTO.HospitalID);
+                hospitalUpdateDTO.MapTo(entity);
                 this.dataContext.Hospitals.Update(entity);
                 int rows = this.dataContext.SaveChanges();
                 if (rows == 1)
