@@ -10,8 +10,10 @@ namespace BDMS_APIs.AutoMapper
         {
             CreateMap<DonorRegistrationDTO, Donor>();
             CreateMap<DonorProfileDTO, Donor>();
+            CreateMap<Donor, DonorProfileDTO>();
             CreateMap<HospitalRegistrationDTO, Hospital>();
             CreateMap<HospitalUpdateDTO, Hospital>();
+            CreateMap<Hospital, HospitalUpdateDTO>();
         }
     }
 }

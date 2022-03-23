@@ -45,7 +45,8 @@ namespace BDMS_APIs.Controllers
             try
             {
                 Hospital entity = this.dataContext.Hospitals.Find(hospitalID);
-                return Ok(entity);
+                HospitalUpdateDTO dto = this.mapper.Map<HospitalUpdateDTO>(entity);
+                return Ok(dto);
             }
             catch (Exception er)
             {

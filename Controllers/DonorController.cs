@@ -44,7 +44,8 @@ namespace BDMS_APIs.Controllers
             try
             {
                 Donor entity = this.dataContext.Donors.Find(nic);
-                return Ok(entity);
+                DonorProfileDTO dto = this.mapper.Map<DonorProfileDTO>(entity);
+                return Ok(dto);
             }
             catch (Exception er)
             {
