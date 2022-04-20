@@ -7,6 +7,7 @@ namespace BDMS_APIs
     {
         public DbSet<Donor> Donors { get; set; }
         public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<DonationCampaign> DonationCampaigns { get; set; }
 
         //Constructor with DbContextOptions and the context class itself
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
@@ -21,6 +22,7 @@ namespace BDMS_APIs
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Donor>();
             modelBuilder.Entity<Hospital>();
+            modelBuilder.Entity<DonationCampaign>();
         }
     }
 }

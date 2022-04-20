@@ -18,7 +18,6 @@ namespace BDMS_APIs.DTOs
             hospital.HospitalID = HospitalID;
             hospital.Name = Name;
             hospital.Address = Address;
-            hospital.District = District;
             hospital.ContactNo1 = ContactNo1;
             hospital.ContactNo2 = ContactNo2;
             hospital.City = City;

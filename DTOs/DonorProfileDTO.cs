@@ -21,7 +21,6 @@ namespace BDMS_APIs.DTOs
             donor.NIC = NIC;
             donor.FirstName = FirstName;
             donor.LastName = LastName;
-            donor.District = District;
             donor.City = City;
             donor.DOB = DOB;
             donor.BloodGroup = BloodGroup;
