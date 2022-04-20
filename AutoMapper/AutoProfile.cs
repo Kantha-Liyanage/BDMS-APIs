@@ -18,6 +18,9 @@ namespace BDMS_APIs.AutoMapper
 
             CreateMap<DonationCampaignDTO, DonationCampaign>();
             CreateMap<DonationCampaign, DonationCampaignDTO>();
+
+            CreateMap<AppointmentDTO, Appointment>();
+            CreateMap<Appointment, AppointmentDTO>();
         }
     }
 }
