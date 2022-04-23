@@ -18,7 +18,7 @@ namespace BDMS_APIs.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([FromBody] DonorRegistrationDTO donorRegistrationDTO)
+        public ActionResult Create(DonorRegistrationDTO donorRegistrationDTO)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                return BadRequest(new MessageDTO(er.Message));
             }
         }
 

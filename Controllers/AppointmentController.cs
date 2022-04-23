@@ -54,13 +54,13 @@ namespace BDMS_APIs.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("AllOpen")]
         public ActionResult ReadAllOpen()
         {
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("DonationCampaignOpen")]
         public ActionResult ReadDonationCampaignOpen()
         {
             return Ok();
