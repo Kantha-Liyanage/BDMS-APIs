@@ -9,8 +9,6 @@ namespace BDMS_APIs
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<DonationCampaign> DonationCampaigns { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-
-        //Constructor with DbContextOptions and the context class itself
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

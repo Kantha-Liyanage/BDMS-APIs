@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BDMS_APIs.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220420181234_M20220420_2")]
-    partial class M20220420_2
+    [Migration("20220424133159_up1")]
+    partial class up1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,35 @@ namespace BDMS_APIs.Migrations
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.11");
+
+            modelBuilder.Entity("BDMS_APIs.Models.Appointment", b =>
+                {
+                    b.Property<int>("AppointmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CampaignID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DonorNIC")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastModifiedDateTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TimeSlot")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppointmentID");
+
+                    b.ToTable("Appointment");
+                });
 
             modelBuilder.Entity("BDMS_APIs.Models.DonationCampaign", b =>
                 {
@@ -28,25 +57,22 @@ namespace BDMS_APIs.Migrations
                     b.Property<string>("BloodGroups")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CampaignDate")
+                        .HasColumnType("datetime");
+
                     b.Property<string>("CampaignName")
                         .HasColumnType("text");
 
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("DateAndTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time");
-
                     b.Property<string>("HospitalID")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("LastModifiedDateTime")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Location")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Remarks")
                         .HasColumnType("text");
 
                     b.Property<string>("Status")
@@ -91,6 +117,9 @@ namespace BDMS_APIs.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Phone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
                         .HasColumnType("text");
 
                     b.HasKey("NIC");

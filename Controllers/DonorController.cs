@@ -48,18 +48,17 @@ namespace BDMS_APIs.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public ActionResult Read()
+        public ActionResult Read(string nic)
         {
-            string nic = "";
             try
             {
+                /*
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 if (identity != null)
                 {
                     nic = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
                 }
-
+                */
                 Donor entity = this.dataContext.Donors.Find(nic);
                 DonorProfileDTO dto = this.mapper.Map<DonorProfileDTO>(entity);
                 return Ok(dto);

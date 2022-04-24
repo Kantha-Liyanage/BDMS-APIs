@@ -16,10 +16,9 @@ namespace BDMS_APIs.Models
         public string BloodGroups { get; set; }
         public string City { get; set; }
         public string Location { get; set; }
-        public DateTime DateAndTime { get; set; }
-        public TimeSpan Duration { get; set; }
+        public DateTime CampaignDate { get; set; }
+        public string Remarks { get; set; }
         public int TimeSlots { get; set; }
         public string Status { get; set; }
-        public DateTime LastModifiedDateTime { get; set; }
     }
 }

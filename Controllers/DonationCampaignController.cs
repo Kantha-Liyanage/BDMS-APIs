@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using BDMS_APIs.DTOs;
 using BDMS_APIs.Models;
@@ -30,6 +32,26 @@ namespace BDMS_APIs.Controllers
                     return Created("", donationCampaignDTO);
                 }
                 return BadRequest(new MessageDTO("No records created."));
+            }
+            catch (Exception er)
+            {
+                return BadRequest(new MessageDTO(er.InnerException.Message));
+            }
+        }
+
+        [HttpGet("HospitalOpenAll")]
+        public ActionResult HospitalOpenAll(string hospitalID)
+        {
+            try
+            {
+                List<DonationCampaign> donationCampaigns = this.dataContext.DonationCampaigns.Where(campaign => campaign.HospitalID == hospitalID).ToList();
+                List<DonationCampaignDTO> outList = new List<DonationCampaignDTO>();
+                foreach (var campaign in donationCampaigns)
+                {
+                    DonationCampaignDTO dto = this.mapper.Map<DonationCampaignDTO>(campaign);
+                    outList.Add(dto);
+                }
+                return Ok(outList);
             }
             catch (Exception er)
             {

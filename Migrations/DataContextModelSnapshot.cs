@@ -55,25 +55,22 @@ namespace BDMS_APIs.Migrations
                     b.Property<string>("BloodGroups")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CampaignDate")
+                        .HasColumnType("datetime");
+
                     b.Property<string>("CampaignName")
                         .HasColumnType("text");
 
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("DateAndTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time");
-
                     b.Property<string>("HospitalID")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("LastModifiedDateTime")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Location")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Remarks")
                         .HasColumnType("text");
 
                     b.Property<string>("Status")
