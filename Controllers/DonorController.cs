@@ -1,7 +1,9 @@
 using System;
+using System.Security.Claims;
 using AutoMapper;
 using BDMS_APIs.DTOs;
 using BDMS_APIs.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BDMS_APIs.Controllers
@@ -18,7 +20,7 @@ namespace BDMS_APIs.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(DonorRegistrationDTO donorRegistrationDTO)
+        public ActionResult Create([FromBody] DonorRegistrationDTO donorRegistrationDTO)
         {
             try
             {
@@ -34,22 +36,44 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
         [HttpGet]
-        public ActionResult Read(string nic)
+        [Authorize]
+        public ActionResult Read()
         {
+            string nic = "";
             try
             {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                if (identity != null)
+                {
+                    nic = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                }
+
                 Donor entity = this.dataContext.Donors.Find(nic);
                 DonorProfileDTO dto = this.mapper.Map<DonorProfileDTO>(entity);
                 return Ok(dto);
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -70,7 +94,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
     }

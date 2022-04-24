@@ -35,7 +35,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -50,7 +57,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -71,7 +85,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
     }

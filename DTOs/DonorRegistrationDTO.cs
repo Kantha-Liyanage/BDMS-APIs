@@ -7,7 +7,6 @@ namespace BDMS_APIs.DTOs
         public string NIC { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string District { get; set; }
         public string City { get; set; }
         public DateTime DOB { get; set; }
         public string BloodGroup { get; set; }
