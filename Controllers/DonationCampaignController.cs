@@ -78,7 +78,7 @@ namespace BDMS_APIs.Controllers
         {
             try
             {
-                List<DonationCampaign> donationCampaigns = this.dataContext.DonationCampaigns.Where(campaign => campaign.City == city).ToList();
+                List<DonationCampaign> donationCampaigns = this.dataContext.DonationCampaigns.Where(campaign => (campaign.City == city && campaign.Status == "Published")).ToList();
                 List<DonationCampaignDTO> outList = new List<DonationCampaignDTO>();
                 foreach (var campaign in donationCampaigns)
                 {
