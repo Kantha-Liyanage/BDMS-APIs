@@ -35,7 +35,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -55,7 +62,41 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
+            }
+        }
+
+        [HttpGet("PublishedOpenAll")]
+        public ActionResult PublishedOpenAll(string city)
+        {
+            try
+            {
+                List<DonationCampaign> donationCampaigns = this.dataContext.DonationCampaigns.Where(campaign => campaign.City == city).ToList();
+                List<DonationCampaignDTO> outList = new List<DonationCampaignDTO>();
+                foreach (var campaign in donationCampaigns)
+                {
+                    DonationCampaignDTO dto = this.mapper.Map<DonationCampaignDTO>(campaign);
+                    outList.Add(dto);
+                }
+                return Ok(outList);
+            }
+            catch (Exception er)
+            {
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -70,7 +111,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.InnerException.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
 
@@ -91,7 +139,14 @@ namespace BDMS_APIs.Controllers
             }
             catch (Exception er)
             {
-                return BadRequest(new MessageDTO(er.Message));
+                if (er.InnerException != null)
+                {
+                    return BadRequest(new MessageDTO(er.InnerException.Message));
+                }
+                else
+                {
+                    return BadRequest(new MessageDTO(er.Message));
+                }
             }
         }
     }
