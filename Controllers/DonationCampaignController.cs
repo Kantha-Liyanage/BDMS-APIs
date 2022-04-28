@@ -73,8 +73,8 @@ namespace BDMS_APIs.Controllers
             }
         }
 
-        [HttpGet("PublishedOpenAll")]
-        public ActionResult PublishedOpenAll(string city)
+        [HttpGet("CityOpenAll")]
+        public ActionResult CityOpenAll(string city)
         {
             try
             {
