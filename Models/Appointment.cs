@@ -16,6 +16,5 @@ namespace BDMS_APIs.Models
         public int TimeSlot { get; set; }
         public string Remarks { get; set; }
         public string Status { get; set; }
-        public DateTime LastModifiedDateTime { get; set; }
     }
 }
