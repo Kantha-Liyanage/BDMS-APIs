@@ -21,7 +21,7 @@ namespace BDMS_APIs.Controllers
         [HttpGet]
         public ActionResult Test()
         {
-            return Ok(new MessageDTO("Badu Weda :)"));
+            return Ok(new MessageDTO("It is working... :)"));
         }
 
         [HttpPost("AuthenticateDonor")]
