@@ -18,7 +18,7 @@ namespace BDMS_APIs.Controllers
             this.dataContext = dataContext;
         }
 
-        [HttpGet]
+        [HttpGet("Test")]
         public ActionResult Test()
         {
             return Ok(new MessageDTO("It is working... :)"));
