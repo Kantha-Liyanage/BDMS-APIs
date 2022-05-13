@@ -18,10 +18,10 @@ namespace BDMS_APIs.Controllers
             this.dataContext = dataContext;
         }
 
-        [HttpGet("Test")]
+        [HttpGet("TestAPI")]
         public ActionResult Test()
         {
-            return Ok(new MessageDTO("It is working... :)"));
+            return Ok(new MessageDTO("It is working CI/CD :)"));
         }
 
         [HttpPost("AuthenticateDonor")]
